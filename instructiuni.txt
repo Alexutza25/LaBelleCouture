@@ -1,0 +1,52 @@
+INSTRUCTIUNI DE CONFIGURARE SI RULARE
+
+CE PRIMITI:
+- fisier .zip cu proiectul JetBrains Rider (.sln + foldere)
+- fisier .bak cu backup-ul bazei de date SQL Server
+- acest fisier instructiuni.txt
+
+1. INSTALARE NECESARA
+- instalati JetBrains Rider
+- instalati .NET 9.0.025 SDK:  https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+- instalati Microsoft SQL Server:  https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+- instalati SQL Server Management Studio (SSMS):  https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
+
+
+2. RESTAURARE BAZA DE DATE
+- deschideti SSMS
+- conectati-va la localhost
+- click dreapta pe "Databases" > Restore Database...
+- Source: Device > selectati fisierul LaBelleCouture.bak primit
+- click OK (baza va fi restaurata)
+
+3. CONFIGURARE CONEXIUNE IN PROIECT
+- deschideti appsettings.json din proiect
+- verificati sau modificati ConnectionStrings
+
+Exemplu:
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=TryDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
+
+4. DESCHIDERE PROIECT IN RIDER
+- deschideti JetBrains Rider
+- open > selectati Try.sln
+- asteptati incarcare dependinte
+- deschideti tab-ul Database (dreapta sus sau View > Tool Windows > Database)
+- + > Data Source > Microsoft SQL Server
+- completati:
+    Host: localhost
+    Database: TryDb
+    Authentication: Windows sau SQL Login
+- Test Connection > OK
+
+5. RULARE
+- rulati proiectul din JetBrains Rider, din terminal: 
+dotnet restore
+dotnet build
+dotnet run
+- dupa rulare, deschideti în browser adresa afisata în consola (ex: https://localhost:5001)
+- aplicatia se va conecta la baza de date si va porni
+
+
+Boișteanu Ioana-Alexandra 
