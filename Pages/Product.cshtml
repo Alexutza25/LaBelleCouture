@@ -1,0 +1,126 @@
+﻿@page
+@model Try.Pages.Product
+
+<link rel="stylesheet" href="~/css/navbar.css" />
+<link rel="stylesheet" href="/css/product.css" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+
+<div id="toast" class="toast"></div>
+
+<!-- PAGINA DE PRODUS -->
+<div class="product-page" id="productPage">
+    <div class="product-container">
+        <div class="image-gallery">
+            <img id="productImage" src="https://via.placeholder.com/300" alt="Main Product Image" class="main-image" />
+            <div class="thumbnails" id="productThumbnails"></div>
+        </div>
+
+        <div class="product-info">
+
+            <div id="productDetails"></div>
+
+            <p id="availability"></p>
+
+            <div class="selectors" id="options"></div>
+
+            
+
+
+            <div class="actions">
+                <button class="btn add-to-cart" id="addToCart">🛒 Add to Cart</button>
+                <button class="btn fav" id="addToFavourites">❤️ Add to Favourites</button>
+            </div>
+
+            <div class="delivery-details">
+                <h3>Delivery Details</h3>
+                <p>Delivery in 2-4 business days. Free returns within 14 days.</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="related-section">
+        
+        <div id="associatedProductsContainer" class="associated-products-section" style="margin-top: 40px;">
+            <!--  actualizare dinamica JS -->
+        </div>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn left" onclick="scrollBoughtTogether(-1)">←</button>
+
+            <div class="scroll-container" id="boughtTogether"> 
+            </div>
+
+            <button class="scroll-btn right" onclick="scrollBoughtTogether(1)">→</button>
+
+            
+          
+        </div>
+
+        <div id="recommendationsWrapper" class="recommendations-section" style="display: none;">
+            <h2 style="font-family: Pacifico;">You Might Like This</h2>
+
+            <div class="scroll-wrapper">
+                <button class="scroll-btn left" onclick="scrollYouMightLike(-1)">←</button>
+
+                <div id="youMightLikeProduct" class="scroll-container">
+                    <!-- produsele vin din JS aici -->
+                </div>
+
+                <button class="scroll-btn right" onclick="scrollYouMightLike(1)">→</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    
+
+    <div id="reviewsSection">
+        <h3>📝 Customer Reviews</h3>
+
+
+        <div id="reviewFormContainer" class="review-form hidden hidden">
+            <h4>💬 Leave a Review</h4>
+
+            <div id="starRating">
+            </div>
+
+            <textarea id="reviewText" placeholder="Write your feedback..." rows="4"></textarea>
+            <button class="btn" id="submitReviewBtn">Submit Review</button>
+
+        </div>
+        <div id="reviewList"></div>
+
+    </div>
+  
+
+</div>
+<div id="sizeGuideModal" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999; display:none; align-items:center; justify-content:center;">
+    <div style="background:white; padding:1rem; border-radius:16px; max-width:600px; width:90%; position:relative;">
+        <button id="closeSizeGuide" style="position:absolute; top:10px; right:20px; font-size:24px; background:none; border:none; cursor:pointer;">×</button>
+        <img src="/images/size-guide.png" alt="Size Guide" style="max-width:100%; border-radius:12px;" />
+    </div>
+</div>
+
+
+
+<!-- JS -->
+<script src="/js/product.js"></script>
+<script>
+function scrollBoughtTogether(direction) {
+    const container = document.getElementById("boughtTogether");
+    const scrollAmount = 300;
+
+    if (container) {
+        container.scrollLeft += direction * scrollAmount;
+    } else {
+        console.warn("#boughtTogether not found");
+    }
+}
+</script>

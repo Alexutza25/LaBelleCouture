@@ -1,0 +1,28 @@
+﻿@model List<Try.DTO.ProductAssociationDto>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<h2 class="association-title">Frequently Bought Together</h2>
+
+<div class="slider-container">
+    <button class="slider-btn left" onclick="scrollLeft1()">❮</button>
+    <div class="slider-track" id="sliderTrack">
+        @foreach (var asociere in Model)
+        {
+            <div class="association-card-slider">
+                <div class="product-pair-slider">
+                    <a class="product-slider" href="/Product?id=@asociere.Product1.ProductId">
+                        <img src="@asociere.Product1.ImageURL" />
+                        <p>@asociere.Product1.Name</p>
+                    </a>
+                    <a class="product-slider" href="/Product?id=@asociere.Product2.ProductId">
+                        <img src="@asociere.Product2.ImageURL" />
+                        <p>@asociere.Product2.Name</p>
+                    </a>
+                </div>
+                <p class="count-info">Bought together @asociere.Count times</p>
+            </div>
+        }
+
+    </div>
+    <button class="slider-btn right" onclick="scrollRight()">❯</button>
+</div>

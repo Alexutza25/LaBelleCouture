@@ -1,0 +1,92 @@
+﻿@page
+@model Try.Pages.IndexModel
+<link href="/css/navbar.css" rel="stylesheet" />
+<link href="/css/home.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+
+<div class="sidebar" id="adminSidebar" style="display: none;">
+    <h1>Admin Panel</h1>
+    <a href="/AdminDashboard">Dashboard</a>
+    <a href="/AdminProducts">Products</a>
+    <a href="/AdminCustomers">Customers</a>
+    <a href="/AdminOrders">Orders</a>
+    <a href="#" id="logoutBtn">Logout</a>
+</div>
+
+<div class="homepage" id="homepageWrapper">
+
+
+    <div class="search-bar-container">
+        <input type="text" id="searchInput" placeholder="Search by name..." />
+    </div>
+
+    <div id="searchResultsContainer" style="display: none;"></div>
+
+
+    <div id="youMightLikeSection" class="centered-wrapper"></div>
+
+
+
+    <div id="productList"></div>
+
+    @await Html.PartialAsync("Associations", Model.Asociate)
+
+    <div class="sort-bar">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect">
+            <option value="">Default</option>
+            <option value="low">Price: Low → High</option>
+            <option value="high">Price: High → Low</option>
+        </select>
+    </div>
+
+    <button id="filterToggle">Filter ⌄</button>
+
+    <div id="filterSidebar" class="filter-sidebar hidden">
+        <button id="closeFilter">&times;</button>
+
+        <h4>Category</h4>
+        <div id="filterCategories"></div>
+
+        <h4>Colour</h4>
+        <div id="filterColors"></div>
+
+        <h4>Material</h4>
+        <div id="filterMaterials"></div>
+
+        <h4>Price</h4>
+        <input type="number" id="minPrice" placeholder="Min">
+        <input type="number" id="maxPrice" placeholder="Max">
+
+        <button id="applyFilters">Show Products</button>
+    </div>
+
+
+
+
+    <div class="centered-wrapper">
+        <section class="category-section">
+            
+            <h2 class="most-bought-title">Most Bought Products</h2>
+            <div class="scroll-wrapper">
+                <div id="topProductsContainer" class="product-scroll-track"></div>
+            </div>
+        </section>
+    </div>
+
+    <h2 class="title">Our Collection</h2>
+    <div id="productContainer" class="centered-wrapper">
+        <!-- produsele se vor adauga aici dinamic -->
+    </div>
+
+
+
+</div>
+<script src="~/js/index.js"></script>
+<script src="~/js/general.js"></script>
+<script src="~/js/modals.js"></script>
+
+

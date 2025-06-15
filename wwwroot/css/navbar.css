@@ -1,0 +1,523 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Pacifico:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico:wght@700&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f9f4f2;
+    font-family: 'Georgia', serif;
+}
+.navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+
+.navbar-links li a {
+    text-decoration: none;
+    color: #5a3e36;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-left: 5px;
+    color: #7a4b54;
+}
+.logout-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff0f4;
+    color: #d1738b;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Pacifico', cursive;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 9999;
+}
+
+.logout-toast.show {
+    opacity: 1;
+}
+/*SIDEBAR PT ADMINISTRATOR*/
+
+body.with-sidebar {
+    margin-left: 200px;
+}
+
+.sidebar {
+    width: 180px;
+    background-color: #f9f4f2; 
+    padding: 1.5rem 1rem;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    font-family: 'Georgia', serif;
+}
+
+.sidebar h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    margin-bottom: 2rem;
+    color: #7a4b54; 
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    margin: 1rem 0;
+    color: #5a3e36; 
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #d1738b; 
+    text-decoration: underline;
+}
+.main-content {
+    margin-left: 200px; 
+    padding: 3rem 2rem;
+    flex: 1;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-top: 2rem;
+    color: #6a2c2c;
+}
+
+.sidebar-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e69ba0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 10px 10px 10px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.sidebar-btn:hover {
+    background-color: #d66b71;
+}
+
+/*MODALS*/
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+.modal.active {
+    display: flex;
+}
+.modal-content {
+    background-color: #f5caca;
+    padding: 2rem;
+    font-family: 'Pacifico', cursive; 
+    border-radius: 16px;
+    width: 420px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    position: relative;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+    font-family: 'Pacifico', cursive; 
+
+}
+
+.close, .close-modal {
+    position: absolute;
+    font-family: 'Pacifico', cursive; 
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #6e2d2d;
+    cursor: pointer;
+
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e69ba0;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateY(-10px);
+}
+.toast.error {
+    background: #cc4b4b;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e69ba0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 10px 10px 10px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color: #d66b71;
+}
+
+#categoryList input[type="text"] {
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #d99;
+    background: #fffaf7;
+    color: #7a4a4a;
+    outline: none;
+    width: 60%;
+}
+
+#btnAddCategory {
+    background-color: #e69ba0;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 50%;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+#btnAddCategory:hover {
+    background-color: #d66b71;
+}
+
+#productModal input[type="text"],
+#productModal select {
+    padding: 8px 12px;
+    border: 1px solid #d99;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 0.5rem 0;
+    width: 100%;
+    background: #fffaf7;
+    color: #7a4a4a;
+    outline: none;
+}
+
+#submitProduct {
+    background-color: #e69ba0;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+#submitProduct:hover {
+    background-color: #d66b71;
+}
+
+.toggle-btn {
+    background-color: #f5b0b0;
+    border-radius: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+.toggle-btn:hover {
+    background-color: #f19797;
+}
+
+.variant-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.variant-item input {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#variantEditModal .modal-content {
+    background-color: #f5caca;
+}
+
+#variantEditContainer input {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d99;
+    background: #fffaf7;
+    color: #5a2b2b;
+}
+
+.variant-item {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.variant-item input {
+    flex: 1;
+}
+
+.btn-update, .btn-delete {
+    background: #f5b0b0;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.btn-update:hover {
+    background: #f19797;
+}
+.btn-delete:hover {
+    background: #d66b71;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#addProductForm {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f7d6d6;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#addProductForm input,
+#addProductForm select {
+    padding: 10px;
+    border: 1px solid #e6a1a1;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#scrollToAddProduct {
+    background-color: #f09ea3;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 16px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#scrollToAddProduct:hover {
+    background-color: #d66b71;
+}
+
+#addCategoryForm.hidden {
+    display: none;
+}
+
+.category-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.category-form input[type="text"] {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #d99;
+    background: #fffaf7;
+    color: #7a4a4a;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.3s;
+}
+
+.category-form input[type="text"]:focus {
+    border-color: #e69ba0;
+}
+
+#usersModal .modal-content {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #3c2c2c;
+    background-color: #fffdfd;
+    padding: 2rem;
+    border-radius: 16px;
+}
+
+#usersList > div {
+    background: #fffaf7;
+    border-left: 4px solid #f19797;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+#usersList p {
+    margin: 4px 0;
+    font-size: 14.5px;
+}
+
+#usersList > div:hover {
+    background-color: #fff1f1;
+    transform: scale(1.01);
+}
+
+#addAdminForm {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px dashed #e69ba0;
+    background-color: #fff9f9;
+    border-radius: 12px;
+}
+
+#addAdminForm input {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e6a1a1;
+    background: #fffaf7;
+    font-size: 14px;
+}
+
+#addAdminForm button {
+    margin-top: 10px;
+}
+
+
+#ordersModal .modal-content p {
+    margin: 0.2rem 0;
+    font-size: 15px;
+}
+
+.modal-content {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #3c2c2c;
+}
+
+#ordersList > div {
+    background: #fff9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+#ordersList p {
+    margin: 0.3rem 0;
+    font-size: 14.5px;
+}
+
+#ordersList hr {
+    margin-top: 1rem;
+    border: none;
+    border-top: 1px dashed #e0baba;
+}
+
+#topProductSection {
+    background-color: #fdf1f2;
+    border-left: 4px solid #ff9aa2;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+#topProductSection h3 {
+    margin-bottom: 0.5rem;
+    color: #7a4b54;
+}
+
+.modal-content h2, .modal-content h3 {
+    font-family: 'Pacifico', cursive;
+    color: #7a4b54;
+}
+
+
+#ordersList > div:hover {
+    transform: scale(1.01);
+    background: #fff4f4;
+}
+
+#ordersFilterContainer button {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #f6a5a5;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#ordersFilterContainer button:hover {
+    background-color: #e36d6d;
+}
+

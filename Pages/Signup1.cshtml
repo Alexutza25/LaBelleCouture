@@ -1,0 +1,58 @@
+﻿@page
+@model Try.Pages.Signup1Model
+<link href="~/css/signup.css" rel="stylesheet" />
+<link href="~/css/navbar.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="signup-container">
+<div class="form-box">
+    <h1>Sign Up</h1>
+
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <label asp-for="SignUp.Name"></label>
+        <input asp-for="SignUp.Name"/>
+        <span asp-validation-for="SignUp.Name" class="text-danger"></span>
+
+        <label asp-for="SignUp.Email"></label>
+        <input asp-for="SignUp.Email"/>
+        <span asp-validation-for="SignUp.Email" class="text-danger"></span>
+
+        <label asp-for="SignUp.Phone"></label>
+        <input asp-for="SignUp.Phone"/>
+        <span asp-validation-for="SignUp.Phone" class="text-danger"></span>
+
+        <label asp-for="SignUp.Password"></label>
+        <input asp-for="SignUp.Password" type="password"/>
+        <span asp-validation-for="SignUp.Password" class="text-danger"></span>
+
+        <label asp-for="SignUp.ConfirmPassword"></label>
+        <input asp-for="SignUp.ConfirmPassword" type="password"/>
+        <span asp-validation-for="SignUp.ConfirmPassword" class="text-danger"></span>
+
+        <button type="submit">Continue</button>
+    </form>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    function showToast(message, type = "success") {
+        const toast = document.getElementById("toast");
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        toast.style.display = "block";
+
+        setTimeout(() => toast.classList.add("show"), 100);
+        setTimeout(() => {
+            toast.classList.remove("show");
+            setTimeout(() => toast.style.display = "none", 300);
+        }, 2500);
+    }
+
+</script>

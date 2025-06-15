@@ -1,0 +1,56 @@
+﻿@page
+@model Try.Pages.Profile
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<link rel="stylesheet" href="~/css/profile.css" />
+<link href="~/css/navbar.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+@await Html.PartialAsync("Shared/_Navbar")
+
+<div class="profile-page">
+    <h1>👤 My Profile</h1>
+
+    <form id="profileForm">
+        <fieldset>
+            <legend>📝 Personal Information</legend>
+            <input name="Name" placeholder="Full Name" required />
+            <input name="Email" placeholder="Email Address" required />
+            <input name="Phone" placeholder="Phone Number" />
+        </fieldset>
+        <hr />
+        <hr />
+        <fieldset class="password-section">
+            <legend>🔒 Change Password</legend>
+            <input type="password" name="CurrentPassword" placeholder="Current Password"  />
+            <input type="password" name="NewPassword" placeholder="New Password"  />
+            <button type="button" id="changePasswordBtn">Change Password</button>
+        </fieldset>
+        <hr />
+
+
+        <fieldset>
+            <legend>📍 Delivery Address</legend>
+            <input name="County" placeholder="County" />
+            <input name="City" placeholder="City" />
+            <input name="Street" placeholder="Street" />
+            <input name="Number" placeholder="Street Number" />
+            <input name="BuildingEntrance" placeholder="Building Entrance" />
+            <input name="Floor" placeholder="Floor" />
+            <input name="ApartmentNumber" placeholder="Apartment Number" />
+            <div class="form-group" style="flex: 1 1 100%;">
+                <label for="AdditionalDetails">Additional Details</label>
+                <textarea name="AdditionalDetails" id="AdditionalDetails" placeholder="intercom, access code, etc."></textarea>
+            </div>        </fieldset>
+
+        <button type="submit" class="save-profile">💾 Save Profile</button>
+    </form>
+
+    <h2>📦 My Orders</h2>
+    <div id="orderList">
+        <p>Loading your orders...</p>
+    </div>
+    <div id="toast" class="toast"></div>
+
+</div>
+
+<script src="~/js/profile.js"></script>

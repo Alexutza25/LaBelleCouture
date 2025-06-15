@@ -1,0 +1,25 @@
+﻿@page
+@model Try.Pages.LoginModel
+<link href="/css/login.css" rel="stylesheet" />
+<link href="/css/navbar.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+
+<form id="loginForm" class="login-form">
+    <h1>Login</h1>
+
+    <input id="emailInput" name="Email" placeholder="Email address" />
+    <input id="passwordInput" name="Password" type="password" placeholder="Password" />
+
+    <button type="submit" class="login-link">Continue</button>
+
+    <div id="logout-toast" class="logout-toast" style="display: none;">
+         You have succesfully Logged Out
+    </div>
+
+    <p class="error" id="errorText" style="color: red;"></p>
+</form>
+
+<script src="/js/login.js"></script>
+

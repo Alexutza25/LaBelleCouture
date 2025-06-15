@@ -1,0 +1,112 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Pacifico:wght@700&display=swap');
+
+/* doar diferentele, fara dubluri */
+
+/* continutul principal se muta spre dreapta cand exista sidebar */
+body.with-sidebar {
+    margin-left: 220px;
+}
+
+/* fundal roz pal pentru sidebar */
+.sidebar {
+    background-color: #f3d6d3;
+}
+
+/* titlu din sidebar cu maro-roscat */
+.sidebar h1 {
+    color: #944f4f;
+}
+
+/* link-uri cu aceeasi culoare si font ingrosat */
+.sidebar a {
+    color: #944f4f;
+    font-weight: bold;
+}
+
+/* la hover, culoare mai rosie pentru link-uri */
+.sidebar a:hover {
+    color: #b73535;
+}
+
+/* stil general pentru tabele */
+table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+/* celule cu margini subtiri, spatii interne si text mic */
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+/* versiune mai compacta de tabel */
+.table-sm th, .table-sm td {
+    padding: 4px 8px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+}
+
+/* celule de descriere cu latime limitata, text scurtat cu puncte si cursor pointer */
+.desc-cell {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    color: #333;
+}
+
+/* fereastra modala ascunsa initial, pozitionata pe centru, fundal alb, margine si umbra */
+.desc-modal {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 2000;
+    max-width: 600px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* afisare modala cand exista clasa show */
+.desc-modal.show {
+    display: block;
+}
+
+/* overlay negru semi-transparent, ascuns initial, ocupa tot ecranul */
+.desc-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 1999;
+}
+
+/* afisare overlay cand exista clasa show */
+.desc-overlay.show {
+    display: block;
+}
+
+/* antet pentru tabelul de produse cu fundal roz ca sidebar-ul */
+.table thead.product-header {
+    background-color: #f3d6d3;
+    color: #722f37;
+}
+
+/* antet pentru tabelul de variante cu roz deschis si text maro */
+.table thead.variant-header {
+    background-color: #fbeeee;
+    color: #944f4f;
+}

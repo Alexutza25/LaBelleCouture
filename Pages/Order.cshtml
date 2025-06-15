@@ -1,0 +1,48 @@
+﻿@page
+@model Try.Pages.Order
+
+<link rel="stylesheet" href="~/css/navbar.css" />
+<link rel="stylesheet" href="~/css/order.css" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+@await Html.PartialAsync("Shared/_Navbar")
+<div class="order-page">
+    <h1>🧾 Finalize Order</h1>
+
+    <form action="javascript:void(0);" class="order-form" novalidate>
+        <fieldset>
+            <legend>📍 Shipping Adress</legend>
+
+            <input type="text" name="County" placeholder="County" required />
+            <input type="text" name="City" placeholder="City" required />
+            <input type="text" name="Street" placeholder="Street" required />
+            <input type="text" name="Number" placeholder="Number" required />
+            <input type="text" name="BuildingEntrance" placeholder="Building Entrance (optional)" />
+            <input type="text" name="Floor" placeholder="Floor (optional)" />
+            <input type="text" name="ApartmentNumber" placeholder="Apartament (optional)" />
+            <textarea name="AdditionalDetails" placeholder="Additional details"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>📦 Ordered Products</legend>
+            <div id="orderedProducts">
+                <p>Loading...</p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>💳 Payment method</legend>
+            <select name="paymentMethod" required>
+                <option value="">Select</option>
+                <option value="card">Card</option>
+                <option value="cash">Cash</option>
+            </select>
+        </fieldset>
+
+        <button type="submit" class="btn confirm-order">✅ Confirm order</button>
+    </form>
+
+    <div id="toast" class="toast"></div>
+
+</div>
+
+<script src="~/js/order.js"></script>

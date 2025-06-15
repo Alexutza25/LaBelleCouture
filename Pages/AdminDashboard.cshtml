@@ -1,0 +1,20 @@
+﻿@page
+@model Try.Pages.AdminDashboardModel
+<link href="~/css/navbar.css" rel="stylesheet" />
+<link href="~/css/admin.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+
+<div class="main-content with-sidebar" id="productTableContainer">
+    <!--  continutul adaugat dinamic-->
+</div>
+
+<!-- modal for description -->
+<div class="desc-modal" id="descModal"></div>
+<div class="desc-overlay" id="descOverlay"></div>
+
+<!-- modals si JS -->
+<script src="/js/general.js"></script>
+<script src="/js/modals.js"></script>
+

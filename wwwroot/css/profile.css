@@ -1,0 +1,189 @@
+﻿html, body {
+    height: 100%;
+
+}
+
+body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background-image: url('../images/profile.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-page {
+    max-width: 700px;
+    margin: auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+}
+
+.order-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.order-product-detail {
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.ordered-product-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #f19797;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    right: 30px;
+    bottom: 30px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(241, 151, 151, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translateY(20px);
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+.form-group {
+    margin-top: 2rem;
+}
+
+
+
+form fieldset {
+    border: none;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+form legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+form .form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+form input, form textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #a86bd1;
+}
+
+form label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+button.save-profile {
+    background: linear-gradient(to right, #f19797, #f5b0b0);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(241, 151, 151, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button.save-profile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(241, 151, 151, 0.4);
+}
+
+button.save-profile:active {
+    transform: scale(0.97);
+}
+
+#changePasswordBtn {
+    margin-top: 1rem;
+    background-color: #f5b0b0; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#changePasswordBtn:hover {
+    background-color: #e88f8f; 
+    transform: scale(1.05);
+}
+
+.password-section {
+    border: none;
+    padding: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.password-section legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #6e2d2d;
+}
+
+.password-section input {
+    flex: 1 1 200px;
+    padding: 10px 16px;
+    border: 1px solid #e5c2c2;
+    border-radius: 12px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+

@@ -1,0 +1,127 @@
+﻿@page
+@model Try.Pages.Signup2Model
+<link href="~/css/signup.css" rel="stylesheet" />
+<link href="~/css/navbar.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+
+<div class="signup-container">
+    <div class="form-box">
+        <h1>Address Details</h1>
+
+        <!-- inputuri ascunse -->
+        <input type="hidden" name="Name" value="@Model.Name" />
+        <input type="hidden" name="Email" value="@Model.Email" />
+        <input type="hidden" name="Phone" value="@Model.Phone" />
+        <input type="hidden" name="Password" value="@Model.Password" />
+        <input type="hidden" name="ConfirmPassword" value="@Model.ConfirmPassword" />
+        <input type="hidden" name="TypeUser" value="@Model.TypeUser" />
+
+        <label>County</label>
+        <input name="Address.County" />
+
+        <label>City</label>
+        <input name="Address.City" />
+
+        <label>Street</label>
+        <input name="Address.Street" />
+
+        <label>Number</label>
+        <input name="Address.Number" />
+
+        <label>Building Entrance <span class="optional">(optional)</span></label>
+        <input name="Address.BuildingEntrance" />
+
+        <label>Floor <span class="optional">(optional)</span></label>
+        <input name="Address.Floor" />
+
+        <label>Apartment Number<span class="optional">(optional)</span></label>
+        <input name="Address.ApartmentNumber" />
+
+        <label>Additional Details</label>
+        <input name="Address.AdditionalDetails" />
+
+        <a href="#" class="login-link" id="finishSignup">Sign Up</a>
+    </div>
+</div>
+<!-- TOAST CONTAINER -->
+<div id="toast" class="toast"></div>
+
+<script>
+    document.getElementById("finishSignup").addEventListener("click", async function (event) {
+        event.preventDefault();
+
+        const url = "/api/User/register"; // ← AICI E NOUL URL
+
+        const user = {
+            name: document.querySelector('[name="Name"]').value,
+            email: document.querySelector('[name="Email"]').value,
+            phone: document.querySelector('[name="Phone"]').value,
+            password: document.querySelector('[name="Password"]').value,
+            confirmPassword: document.querySelector('[name="Password"]').value,
+            typeUser: document.querySelector('[name="TypeUser"]').value,
+            address: {
+                county: document.querySelector('[name="Address.County"]').value,
+                city: document.querySelector('[name="Address.City"]').value,
+                street: document.querySelector('[name="Address.Street"]').value,
+                number: document.querySelector('[name="Address.Number"]').value,
+                buildingEntrance: document.querySelector('[name="Address.BuildingEntrance"]').value,
+                floor: document.querySelector('[name="Address.Floor"]').value,
+                apartmentNumber: document.querySelector('[name="Address.ApartmentNumber"]').value,
+                additionalDetails: document.querySelector('[name="Address.AdditionalDetails"]').value
+            }
+        };
+
+        try {
+            const requiredFields = ['Address.County', 'Address.City', 'Address.Street', 'Address.Number'];
+
+            for (const field of requiredFields) {
+                const value = document.querySelector(`[name="${field}"]`).value.trim();
+                if (!value) {
+                    showToast(`❌ ${field.split('.')[1]} is required.`, "error");
+                    return;
+                }
+            }
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
+
+            if (response.ok) {
+                showToast("✅ Signed up successfully!");
+                setTimeout(() => {
+                    window.location.href = "/Login";
+                }, 1800);
+            } else {
+                const data = await response.json();
+                console.log("Errors:", data);
+                showToast("❌ Error saving", "error");
+            }
+        } catch (error) {
+            showToast("💥 Something went wrong!", "error");
+            const data = await response.json();
+            console.log("Errors:", data);
+
+            console.error(error);
+        }
+
+    });
+    function showToast(message, type = "success") {
+        const toast = document.getElementById("toast");
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        toast.style.display = "block";
+
+        setTimeout(() => toast.classList.add("show"), 100);
+        setTimeout(() => {
+            toast.classList.remove("show");
+            setTimeout(() => toast.style.display = "none", 300);
+        }, 2500);
+    }
+
+</script>

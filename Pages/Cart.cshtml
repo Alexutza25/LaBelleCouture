@@ -1,0 +1,40 @@
+﻿@page
+@model Try.Pages.CartModel
+<link rel="stylesheet" href="~/css/cart.css" />
+<link href="~/css/navbar.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+<body>
+<section class="cart-page">
+    <div class="cart-container">
+        <h1>Your Shopping Cart 🛒</h1>
+
+        <div id="cart-items" class="cart-items">
+            <!-- cosul va fi actualizat dinamic din js -->
+        </div>
+
+        <div class="cart-summary">
+            <p><strong>Available discounts:</strong> <span id="discounts">Loading...</span></p>
+            <p><strong>Delivery time:</strong> 2-5 working days 📦</p>
+            <p><strong>Return policy:</strong> 14 days return available</p>
+            <p><strong>Delivery fee:</strong> <span id="delivery-price">$19.99</span></p>
+            <p><strong>Products total:</strong> <span id="product-total">$0.00</span></p>
+            <h3><strong>Final total:</strong> <span id="cart-total">$0.00</span></h3>
+
+            <button id="placeOrderBtn" class="btn place-order">Place Order</button>
+        </div>
+    </div>
+</section>
+
+<div id="confirmModal" class="confirm-modal hidden">
+    <div class="confirm-content">
+        <p>Are you sure you want to delete this product from your cart?</p>
+        <div class="confirm-buttons">
+            <button id="confirmYes">Yes</button>
+            <button id="confirmNo">No</button>
+        </div>
+    </div>
+</div>
+<script src="~/js/cart.js"></script>
+</body>

@@ -1,0 +1,30 @@
+﻿@page
+@model Try.Pages.Favourites
+
+<link rel="stylesheet" href="~/css/favourites.css" />
+<link href="~/css/navbar.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+@await Html.PartialAsync("Shared/_Navbar")
+
+<div class="favorites-page">
+    <div class="title">Favourites</div>
+
+    <div class="favourites-wrapper" id="favouritesContainer">
+        
+
+    </div>
+    <a class="continue-button" href="/Index">Continue Shopping</a>
+
+</div>
+
+<div id="confirmToast" class="toast-confirm hidden">
+    <p>Are you sure?</p>
+    <div class="buttons">
+        <button id="confirmYes" class="btn-yes">Yes</button>
+        <button id="confirmNo" class="btn-no">No</button>
+    </div>
+</div>
+
+
+<script src="/js/favourites.js"></script>
